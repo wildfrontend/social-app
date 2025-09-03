@@ -1,4 +1,5 @@
 import { Text, View } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function Index() {
   let fontSize = 24;
@@ -95,6 +96,10 @@ export default function Index() {
       >
         Noto Sans TC Black
       </Text>
+      <View style={{ height: 24 }} />
+      <Link href="/supabase-test" style={{ color: '#2563eb', fontSize: 16 }}>
+        前往 Supabase 測試頁
+      </Link>
     </View>
   );
 }
