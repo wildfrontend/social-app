@@ -1,16 +1,16 @@
-import { Text, View } from "react-native";
+import { Text, View } from 'react-native';
 
 export default function Index() {
   let fontSize = 24;
   let paddingVertical = 6;
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text
         style={{
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_100Thin",
+          fontFamily: 'NotoSansTC_100Thin',
         }}
       >
         Noto Sans TC Thin
@@ -20,7 +20,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_200ExtraLight",
+          fontFamily: 'NotoSansTC_200ExtraLight',
         }}
       >
         Noto Sans TC Extra Light
@@ -30,7 +30,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_300Light",
+          fontFamily: 'NotoSansTC_300Light',
         }}
       >
         Noto Sans TC Light
@@ -40,7 +40,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_400Regular",
+          fontFamily: 'NotoSansTC_400Regular',
         }}
       >
         Noto Sans TC Regular
@@ -50,7 +50,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_500Medium",
+          fontFamily: 'NotoSansTC_500Medium',
         }}
       >
         Noto Sans TC Medium
@@ -60,7 +60,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_600SemiBold",
+          fontFamily: 'NotoSansTC_600SemiBold',
         }}
       >
         Noto Sans TC Semi Bold
@@ -70,7 +70,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_700Bold",
+          fontFamily: 'NotoSansTC_700Bold',
         }}
       >
         Noto Sans TC Bold
@@ -80,7 +80,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_800ExtraBold",
+          fontFamily: 'NotoSansTC_800ExtraBold',
         }}
       >
         Noto Sans TC Extra Bold
@@ -90,7 +90,7 @@ export default function Index() {
           fontSize,
           paddingVertical,
           // Note the quoting of the value for `fontFamily` here; it expects a string!
-          fontFamily: "NotoSansTC_900Black",
+          fontFamily: 'NotoSansTC_900Black',
         }}
       >
         Noto Sans TC Black

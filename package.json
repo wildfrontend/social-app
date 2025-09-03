@@ -4,12 +4,13 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "dev": "REACT_NATIVE_PACKAGER_HOSTNAME=$(node ./config/wsl2/get_network_local_ip.js) expo start",
+    "dev": "REACT_NATIVE_PACKAGER_HOSTNAME=$(node ./configs/wsl2/get_network_local_ip.js) expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "prettier": "npx prettier --write ./src & eslint --fix ./src"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-tc": "^0.4.1",
@@ -43,9 +44,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/react": "~19.0.10",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
+    "eslint-plugin-unused-imports": "^4.2.0",
     "typescript": "~5.8.3"
   },
   "private": true

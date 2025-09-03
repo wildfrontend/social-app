@@ -1,15 +1,15 @@
-import { configureFonts, MD3LightTheme } from "react-native-paper";
+import { MD3LightTheme, configureFonts } from 'react-native-paper';
 
 export const notoSansTC = {
-  100: "NotoSansTC_100Thin",
-  200: "NotoSansTC_200ExtraLight",
-  300: "NotoSansTC_300Light",
-  400: "NotoSansTC_400Regular",
-  500: "NotoSansTC_500Medium",
-  600: "NotoSansTC_600SemiBold",
-  700: "NotoSansTC_700Bold",
-  800: "NotoSansTC_800ExtraBold",
-  900: "NotoSansTC_900Black",
+  100: 'NotoSansTC_100Thin',
+  200: 'NotoSansTC_200ExtraLight',
+  300: 'NotoSansTC_300Light',
+  400: 'NotoSansTC_400Regular',
+  500: 'NotoSansTC_500Medium',
+  600: 'NotoSansTC_600SemiBold',
+  700: 'NotoSansTC_700Bold',
+  800: 'NotoSansTC_800ExtraBold',
+  900: 'NotoSansTC_900Black',
 } as const;
 
 const themeConfig = {

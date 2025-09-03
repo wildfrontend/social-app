@@ -1,5 +1,5 @@
-const { exec } = require("child_process");
-require("dotenv").config({ path: "./.env.local" });
+const { exec } = require('child_process');
+require('dotenv').config({ path: './.env.local' });
 
 // Executar o comando e capturar a saída
 exec(
@@ -15,7 +15,7 @@ exec(
     }
 
     // Encontrar e imprimir o endereço IPv4
-    const lines = stdout.split("\n");
+    const lines = stdout.split('\n');
     for (const line of lines) {
       if (line.includes(process.env.LOCAL_CONNECTION_IPV4_SEARCH)) {
         const matches = line.match(/\b\d{1,3}(\.\d{1,3}){3}\b/g);
@@ -26,6 +26,6 @@ exec(
       }
     }
 
-    console.log("Endereço IPv4 não encontrado.");
+    console.log('Endereço IPv4 não encontrado.');
   }
 );
