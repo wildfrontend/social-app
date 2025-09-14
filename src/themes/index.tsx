@@ -18,7 +18,7 @@ void SplashScreen.preventAutoHideAsync();
 
 type Props = { children: React.ReactNode };
 
-export default function AppThemeProvider({ children }: Props) {
+const AppThemeProvider = ({ children }: Props) => {
   const [loaded] = useFonts({
     NotoSansTC_100Thin,
     NotoSansTC_200ExtraLight,
@@ -38,4 +38,6 @@ export default function AppThemeProvider({ children }: Props) {
   if (!loaded) return null;
 
   return <PaperProvider theme={themeConfig}>{children}</PaperProvider>;
-}
+};
+
+export default AppThemeProvider;
