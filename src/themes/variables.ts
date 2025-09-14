@@ -14,6 +14,34 @@ export const notoSansTC = {
 
 const themeConfig = {
   ...MD3LightTheme,
+  dark: false,
+  colors: {
+    ...MD3LightTheme.colors,
+    // Threads-like, high-contrast light palette
+    primary: '#111111',
+    onPrimary: '#ffffff',
+    background: '#ffffff',
+    onBackground: '#111111',
+    surface: '#ffffff',
+    onSurface: '#111111',
+    surfaceVariant: '#f5f5f5',
+    onSurfaceVariant: '#555555',
+    outline: '#e5e5e5',
+    outlineVariant: '#d9d9d9',
+    secondary: '#666666',
+    onSecondary: '#ffffff',
+    error: '#ff4d4f',
+    onError: '#ffffff',
+    elevation: {
+      level0: 'transparent',
+      level1: '#ffffff',
+      level2: '#fafafa',
+      level3: '#f5f5f5',
+      level4: '#f0f0f0',
+      level5: '#ebebeb',
+    },
+  },
+  roundness: 12,
   fonts: configureFonts({
     config: {
       displayLarge: { fontFamily: notoSansTC[100] },

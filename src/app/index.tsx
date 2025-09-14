@@ -1,21 +1,21 @@
 import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
+import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import {
   ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  StyleSheet,
+  Button,
+  Card,
   Text,
   TextInput,
-  View,
-} from 'react-native';
+  useTheme,
+} from 'react-native-paper';
 
 import { useAnonymousLogin } from '@/apis/supabase/auth';
 import { supabase } from '@/apis/supabase/config';
 
 const Index = () => {
   const router = useRouter();
+  const theme = useTheme();
   const [nickname, setNickname] = useState<string>('');
   const { run, loading, error } = useAnonymousLogin();
 
@@ -42,38 +42,51 @@ const Index = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.select({ ios: 'padding', android: undefined })}
-      style={styles.container}
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <View style={styles.card}>
-        <Text style={styles.title}>匿名登入</Text>
-        <Text style={styles.subtitle}>請先填寫暱稱以建立匿名帳號</Text>
+      <Card mode="elevated" style={styles.card}>
+        <Card.Content>
+          <Text style={{ color: theme.colors.onSurface }} variant="titleLarge">
+            匿名登入
+          </Text>
+          <Text style={{ color: theme.colors.outline }} variant="bodyMedium">
+            請先填寫暱稱以建立匿名帳號
+          </Text>
 
-        <TextInput
-          editable={!loading}
-          onChangeText={setNickname}
-          onSubmitEditing={onAnonLogin}
-          placeholder="輸入暱稱"
-          returnKeyType="done"
-          style={styles.input}
-          value={nickname}
-        />
+          <TextInput
+            editable={!loading}
+            mode="outlined"
+            onChangeText={setNickname}
+            onSubmitEditing={onAnonLogin}
+            placeholder="輸入暱稱"
+            returnKeyType="done"
+            style={{ marginTop: 12 }}
+            value={nickname}
+          />
 
-        {error ? (
-          <Text style={styles.error}>{(error as Error).message}</Text>
-        ) : null}
+          {error ? (
+            <Text
+              style={{ color: theme.colors.error, marginTop: 8 }}
+              variant="bodySmall"
+            >
+              {(error as Error).message}
+            </Text>
+          ) : null}
 
-        <Pressable
-          disabled={loading}
-          onPress={onAnonLogin}
-          style={[styles.button, loading && styles.buttonDisabled]}
-        >
-          {loading ? (
-            <ActivityIndicator color="#ffffff" />
-          ) : (
-            <Text style={styles.buttonText}>以暱稱匿名登入</Text>
-          )}
-        </Pressable>
-      </View>
+          <Button
+            disabled={loading}
+            mode="contained"
+            onPress={onAnonLogin}
+            style={{ marginTop: 12 }}
+          >
+            {loading ? (
+              <ActivityIndicator color={theme.colors.onPrimary} />
+            ) : (
+              '以暱稱匿名登入'
+            )}
+          </Button>
+        </Card.Content>
+      </Card>
     </KeyboardAvoidingView>
   );
 };
@@ -84,49 +97,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
-    backgroundColor: '#fff',
   },
   card: {
     width: '100%',
     maxWidth: 480,
-    gap: 12,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#111',
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#555',
-    marginBottom: 8,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    fontSize: 16,
-  },
-  error: {
-    color: '#b00020',
-    fontSize: 14,
-  },
-  button: {
-    backgroundColor: '#1e1e1e',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonDisabled: {
-    opacity: 0.6,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
   },
 });
 
