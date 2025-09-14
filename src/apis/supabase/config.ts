@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createBrowserClient } from '@supabase/ssr';
 import { createClient } from '@supabase/supabase-js';
 import { AppState, Platform } from 'react-native';
 import 'react-native-get-random-values';
@@ -13,14 +14,17 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    ...(Platform.OS !== 'web' ? { storage: AsyncStorage } : {}),
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: false,
-  },
-});
+export const supabase =
+  Platform.OS === 'web'
+    ? createBrowserClient(supabaseUrl, supabaseAnonKey)
+    : createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          storage: AsyncStorage,
+          autoRefreshToken: true,
+          persistSession: true,
+          detectSessionInUrl: false,
+        },
+      });
 
 export type SupabaseClient = typeof supabase;
 
