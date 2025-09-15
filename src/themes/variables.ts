@@ -41,7 +41,6 @@ const themeConfig = {
       level5: '#ebebeb',
     },
   },
-  roundness: 12,
   fonts: configureFonts({
     config: {
       displayLarge: { fontFamily: notoSansTC[100] },

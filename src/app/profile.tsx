@@ -16,7 +16,7 @@ const Profile = () => {
   const theme = useTheme();
   const { loading, error, data: user } = useGetProfile();
   const {
-    run: signOut,
+    runAsync: signOut,
     loading: signingOut,
     error: signoutError,
   } = useSignOut();
@@ -31,10 +31,12 @@ const Profile = () => {
   }, [router, signOut]);
 
   useEffect(() => {
-    if ((error as Error | undefined)?.message === '未登入') router.replace('/');
+    if (!!error) {
+      router.replace('/');
+    }
   }, [error, router]);
 
-  if (loading)
+  if (loading) {
     return (
       <View
         style={[styles.center, { backgroundColor: theme.colors.background }]}
@@ -42,7 +44,7 @@ const Profile = () => {
         <ActivityIndicator />
       </View>
     );
-
+  }
   return (
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
@@ -52,9 +54,9 @@ const Profile = () => {
           <Text style={{ color: theme.colors.onSurface }} variant="titleLarge">
             使用者資料
           </Text>
-          {!!error && (error as Error).message !== '未登入' ? (
+          {!!error ? (
             <Text style={{ color: theme.colors.error }} variant="bodySmall">
-              {(error as Error).message}
+              {error.message}
             </Text>
           ) : null}
 
@@ -77,7 +79,7 @@ const Profile = () => {
 
           {signoutError ? (
             <Text style={{ color: theme.colors.error }} variant="bodySmall">
-              {(signoutError as Error).message}
+              {signoutError.message}
             </Text>
           ) : null}
 
