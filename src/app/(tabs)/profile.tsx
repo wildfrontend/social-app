@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import {
   ActivityIndicator,
   Button,
@@ -24,17 +24,16 @@ const Profile = () => {
   const onSignOut = useCallback(async () => {
     try {
       await signOut();
-      router.replace('/');
     } catch {
-      // handled by hook error
+      // ignore errors, always navigate back
+    } finally {
+      if (Platform.OS === 'web' && typeof window !== 'undefined' && window.location) {
+        window.location.assign('/');
+      } else {
+        router.replace('/');
+      }
     }
   }, [router, signOut]);
-
-  useEffect(() => {
-    if (!!error) {
-      router.replace('/');
-    }
-  }, [error, router]);
 
   if (loading) {
     return (
